@@ -1,69 +1,633 @@
-<body>
-    <div class="invitation-card">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited! Clarence & Eugenia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --bg-color: #fdfcf9; /* Soft off-white background */
+            --card-bg: #ffffff; /* White card background */
+            --text-color: #4a4a4a; /* Dark grey for readability */
+            --heading-color: #333333;
+            --accent-color: #8B4513; /* SaddleBrown - warm, elegant */
+            --accent-color-lighter: #a05c2c; /* Lighter brown for hover effects */
+            --accent-color-darker: #6a360f; /* Darker accent for hover */
+            --elegant-font: 'Dancing Script', cursive;
+            --modern-font: 'Montserrat', sans-serif;
+            --border-color: #e0e0e0;
+        }
 
-        <div class="invitation-photo-column">
-            <img src="photo1.jpg" alt="[Name 1] and [Name 2] smiling together" class="invitation-photo">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--modern-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- Invitation Card Container --- */
+        .invitation-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header --- */
+        .card-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .photo-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            background-color: var(--bg-color);
+        }
+
+        .couple-photo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+        }
+
+        .invitation-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header-decoration {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            width: 60%;
+            margin: 12px auto;
+        }
+
+        .invitation-intro {
+            font-size: 0.9em;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .couple-names {
+            font-family: var(--elegant-font);
+            font-size: 2.8em;
+            color: var(--accent-color);
+            margin: 8px 0;
+            line-height: 1.2;
+        }
+
+        .invitation-phrase {
+            font-size: 1em;
+            margin-top: 10px;
+            color: var(--heading-color);
+        }
+
+        /* --- Main Details --- */
+        .invitation-details section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .invitation-details section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: var(--elegant-font);
+            font-size: 1.8em;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* --- Event Info Section --- */
+        .event-info .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .event-info .icon {
+            font-size: 1.2em;
+            color: var(--accent-color);
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            margin-top: 3px;
+        }
+
+        .event-info .label {
+            font-weight: 700;
+            color: var(--heading-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .event-info p {
+            margin: 0;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+
+        .event-info .address {
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        .reception-follow {
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        /* --- RSVP Info --- */
+        .rsvp-info {
+            text-align: center;
+        }
+
+        .rsvp-info p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .rsvp-info a.cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color-lighter);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--border-color);
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .or-divider span {
+            padding: 0 10px;
+            font-size: 0.85em;
+            color: var(--text-color);
+        }
+
+        .rsvp-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .rsvp-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown {
+            text-align: center;
+        }
+
+        #countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-unit {
+            background-color: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 5px;
+            min-width: 60px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timer-unit span {
+            display: block;
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+
+        .timer-unit label {
+            display: block;
+            font-size: 0.7em;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        /* --- Footer --- */
+        .invitation-footer {
+            text-align: center;
+            padding: 15px 20px;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        /* --- Animations --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .photo-container, .details-container {
+                flex: 100%;
+            }
+            
+            .photo-container {
+                padding: 15px;
+            }
+            
+            .couple-photo {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .details-container {
+                padding: 20px 15px;
+            }
+            
+            .couple-names {
+                font-size: 2.4em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+                margin-bottom: 12px;
+            }
+            
+            .timer-unit {
+                min-width: 55px;
+                padding: 6px 8px;
+            }
+            
+            .timer-unit span {
+                font-size: 1.4em;
+            }
+            
+            .invitation-header, .invitation-details, .invitation-footer {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            #countdown-timer {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .couple-names {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .timer-unit {
+                min-width: 50px;
+                padding: 5px;
+            }
+            
+            .timer-unit span {
+                font-size: 1.2em;
+            }
+            
+            .event-info .icon {
+                margin-right: 8px;
+                font-size: 1.1em;
+            }
+            
+            .header-decoration {
+                margin: 8px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="card-content">
+            <!-- Photo section -->
+            <div class="photo-container">
+                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' width='1' height='1' %3E%3C/svg%3E" 
+                     class="couple-photo" 
+                     id="couplePhoto"
+                     alt="Clarence and Eugenia">
             </div>
 
-        <div class="invitation-content-column">
-            <header class="invitation-header">
-                <div class="header-decoration top"></div>
-                <p class="invitation-intro">Together with their families</p>
-                <h1 class="couple-names">[Name 1] &amp; [Name 2]</h1>
-                <p class="invitation-phrase">request the pleasure of your company <br> at their wedding celebration</p>
-                <div class="header-decoration bottom"></div>
-            </header>
+            <!-- Details section -->
+            <div class="details-container">
+                <header class="invitation-header">
+                    <div class="header-decoration"></div>
+                    <p class="invitation-intro">Together with their families</p>
+                    <h1 class="couple-names">Clarence &amp; Eugenia</h1>
+                    <p class="invitation-phrase">request the pleasure of your company<br>at their wedding celebration</p>
+                    <div class="header-decoration"></div>
+                </header>
 
-            <main class="invitation-details">
-                <section class="event-info animate-on-scroll">
-                    <h2>When & Where</h2>
-                    <div class="info-item">
-                        <i class="fas fa-calendar-alt icon"></i>
-                        <div>
-                            <span class="label">Date:</span>
-                            <p>[Full Date, e.g., Saturday, October 26th, 2025]</p>
+                <main class="invitation-details">
+                    <section class="event-info animate-on-scroll">
+                        <h2>When & Where</h2>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt icon"></i>
+                            <div>
+                                <span class="label">Date:</span>
+                                <p>Saturday, June 7th, 2025</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-clock icon"></i>
-                        <div>
-                            <span class="label">Time:</span>
-                            <p>[Time, e.g., 4:00 PM]</p>
+                        <div class="info-item">
+                            <i class="fas fa-clock icon"></i>
+                            <div>
+                                <span class="label">Time:</span>
+                                <p>5:30 PM  Wedding Ceremony</p>
+                                <p>8:00 PM  Wedding Banquet</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt icon"></i>
-                        <div>
-                            <span class="label">Venue:</span>
-                            <p>[Venue Name]</p>
-                            <p class="address">[Venue Address Line 1]<br>[Venue Address Line 2]</p>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt icon"></i>
+                            <div>
+                                <span class="label">Venue:</span>
+                                <p>Club One</p>
+                                <p class="address">1/F, Empire Centre,<br>68 Mody Road, Tsim Sha Tsui</p>
+                            </div>
                         </div>
-                    </div>
-                    <p class="reception-follow">Reception to follow immediately</p>
-                </section>
+                        <p class="reception-follow">Reception to follow immediately</p>
+                    </section>
 
-                <section class="rsvp-info animate-on-scroll">
-                    <h2>RSVP</h2>
-                     <p>Your reply is kindly requested by [RSVP Date]</p>
-                    <p>Please visit our wedding website to respond:</p>
-                    <a href="[Your Wedding Website Link]" target="_blank" class="cta-button">Visit Website & RSVP</a>
-                    <p class="or-divider"><span>or</span></p>
-                    <p>Email us at: <a href="mailto:[Your Email]?subject=Wedding RSVP - [Your Last Names]">[Your Email]</a></p>
-                </section>
+                    <section class="rsvp-info animate-on-scroll">
+                        <h2>RSVP</h2>
+                        <p>Your reply is kindly requested by 30th April</p>
+                        <p>Please visit our wedding website to respond:</p>
+                        <a href="[Your Wedding Website Link]" target="_blank" class="cta-button">Visit Website & RSVP</a>
+                        <p class="or-divider"><span>or</span></p>
+                        <p>Or email us at: <a href="mailto:clarencekwan@alumni.cuhk.net?subject=Wedding RSVP -  Clarence %26 Eugenia">clarencekwan@alumni.cuhk.net</a></p>
+                    </section>
 
-                <section class="countdown animate-on-scroll">
-                    <h2>Counting Down the Moments</h2>
-                    <div id="countdown-timer">
-                        <div class="timer-unit"><span id="days">00</span><label>Days</label></div>
-                        <div class="timer-unit"><span id="hours">00</span><label>Hours</label></div>
-                        <div class="timer-unit"><span id="minutes">00</span><label>Minutes</label></div>
-                        <div class="timer-unit"><span id="seconds">00</span><label>Seconds</label></div>
-                    </div>
-                </section>
-            </main>
+                    <section class="countdown animate-on-scroll">
+                        <h2>Counting Down</h2>
+                        <div id="countdown-timer">
+                            <div class="timer-unit">
+                                <span id="days">00</span>
+                                <label>Days</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="hours">00</span>
+                                <label>Hours</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="minutes">00</span>
+                                <label>Minutes</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="seconds">00</span>
+                                <label>Seconds</label>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
 
-            <footer class="invitation-footer">
-                <p>We look forward to celebrating with you!</p>
-            </footer>
-        </div> </div> <script src="script.js"></script>
+        <footer class="invitation-footer">
+            <p>We look forward to celebrating with you!</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Render couple photo
+            const renderCouplePhoto = () => {
+                // Create an SVG placeholder with the correct aspect ratio
+                const imgPlaceholder = document.getElementById('couplePhoto');
+                
+                // Create a new image element
+                const img = new Image();
+                
+                // When the image loads, convert it to a data URL
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Set canvas dimensions to match the image
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    // Draw the image on the canvas
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Convert canvas to data URL
+                    try {
+                        const dataUrl = canvas.toDataURL('image/jpeg');
+                        imgPlaceholder.src = dataUrl;
+                    } catch (e) {
+                        console.error('Error creating data URL:', e);
+                        // If there's an error, use a generated placeholder
+                        generatePlaceholderImage();
+                    }
+                };
+                
+                img.onerror = function() {
+                    console.error('Error loading image');
+                    generatePlaceholderImage();
+                };
+                
+                // Create a romantic couple placeholder if image fails to load
+                function generatePlaceholderImage() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = 400;
+                    canvas.height = 600;
+                    
+                    // Create gradient background
+                    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                    gradient.addColorStop(0, '#fdf6e9');
+                    gradient.addColorStop(1, '#f9e8d2');
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw decorative elements
+                    ctx.fillStyle = '#8B4513';
+                    ctx.font = 'bold 28px Dancing Script, cursive';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Clarence & Eugenia', canvas.width/2, canvas.height/2);
+                    
+                    ctx.font = 'italic 16px Montserrat, sans-serif';
+                    ctx.fillText('June 7th, 2025', canvas.width/2, canvas.height/2 + 40);
+                    
+                    // Draw hearts
+                    ctx.fillStyle = '#a05c2c';
+                    drawHeart(ctx, canvas.width/2, canvas.height/2 - 60, 30);
+                    
+                    imgPlaceholder.src = canvas.toDataURL('image/jpeg');
+                }
+                
+                function drawHeart(ctx, x, y, size) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + size / 4);
+                    ctx.bezierCurveTo(
+                        x, y, 
+                        x - size / 2, y, 
+                        x - size / 2, y + size / 4
+                    );
+                    ctx.bezierCurveTo(
+                        x - size / 2, y + size / 2, 
+                        x, y + size * 3/4, 
+                        x, y + size
+                    );
+                    ctx.bezierCurveTo(
+                        x, y + size * 3/4, 
+                        x + size / 2, y + size / 2, 
+                        x + size / 2, y + size / 4
+                    );
+                    ctx.bezierCurveTo(
+                        x + size / 2, y, 
+                        x, y, 
+                        x, y + size / 4
+                    );
+                    ctx.fill();
+                }
+                
+                // Set the source of the image to the uploaded file
+                // For demo purposes, I'm using the first frame of the image
+                img.src = "photo1.png";
+            };
+            
+            renderCouplePhoto();
+
+            // --- Countdown Timer ---
+            const countdownDate = new Date("June 7, 2025 17:30:00").getTime();
+
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the elements
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+                // If the countdown is finished, write some text
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown-timer").innerHTML = "<p style='font-size: 1.2em; color: var(--accent-color);'>The Big Day is Here!</p>";
+                    // Optionally hide the "Counting Down" heading or change it
+                    const countdownHeading = document.querySelector('.countdown h2');
+                    if (countdownHeading) countdownHeading.innerText = "It's Wedding Time!";
+                }
+            }, 1000); // Update every second
+
+            // --- Simple Scroll Animation ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
+</html>
