@@ -1,7 +1,3 @@
-/* =========================================== */
-/* === COMPLETE REVISED style.css          === */
-/* =========================================== */
-
 /* --- Global Styles & Variables --- */
 :root {
     --bg-color: #fdfcf9; /* Soft off-white background */
@@ -21,53 +17,36 @@
     box-sizing: border-box;
 }
 
-/* --- Simplified Body & Card Base Styles --- */
 body {
     font-family: var(--modern-font);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
-    padding: 30px 15px; /* Spacing around card */
-    /* Removed display:flex - relying on margin:auto */
+    padding: 30px 15px; /* Add padding for spacing on small screens */
+    display: flex; /* Helps center the card */
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
     min-height: 100vh;
 }
 
+/* --- Invitation Card Container --- */
 .invitation-card {
     background-color: var(--card-bg);
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    max-width: 650px; /* Mobile-first max width */
+    max-width: 650px;
     width: 100%;
-    margin: 30px auto; /* Center card using margin auto */
+    margin: 0 auto; /* Center horizontally */
+    overflow: hidden; /* Ensure border-radius clips content */
     border: 1px solid var(--border-color);
-    overflow: hidden; /* IMPORTANT: Prevents content spillover */
-    display: block; /* Default layout: single column */
 }
 
-/* =========================================== */
-/* === Mobile First Layout (Single Column) === */
-/* =========================================== */
-
-.invitation-photo-column {
-    line-height: 0; /* Remove extra space under image */
-}
-
-.invitation-photo {
-    display: block;
-    width: 100%; /* Image takes full width of column */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.invitation-content-column {
-    /* This column holds header, main, footer */
-}
-
-/* --- Header Styles (Mobile) --- */
+/* --- Header --- */
 .invitation-header {
     text-align: center;
-    padding: 30px 30px 20px 30px;
+    padding: 40px 30px 30px 30px;
     border-bottom: 1px solid var(--border-color);
-    position: relative;
+    position: relative; /* For decoration positioning */
 }
 
 .header-decoration {
@@ -86,7 +65,7 @@ body {
 
 .couple-names {
     font-family: var(--elegant-font);
-    font-size: 3.0em; /* Slightly smaller maybe */
+    font-size: 3.5em; /* Adjust as needed */
     color: var(--accent-color);
     margin: 10px 0;
     line-height: 1.2;
@@ -98,50 +77,46 @@ body {
     color: var(--heading-color);
 }
 
-/* --- Main Details Styles (Mobile) --- */
+/* --- Main Details --- */
 .invitation-details {
     padding: 30px;
-    display: block; /* Ensure default is block */
 }
 
 .invitation-details section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     padding-bottom: 30px;
-    border-bottom: 1px dashed var(--border-color);
-    text-align: center; /* Center align text on mobile */
+    border-bottom: 1px dashed var(--border-color); /* Subtle separator */
 }
+
 .invitation-details section:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
 }
 
-.invitation-details h2 {
+h2 {
     font-family: var(--elegant-font);
     font-size: 2em;
     color: var(--accent-color);
-    text-align: center; /* Center headings on mobile */
+    text-align: center;
     margin-bottom: 25px;
     font-weight: 700;
 }
 
-/* --- Event Info Section (Mobile) --- */
+/* --- Event Info Section --- */
 .event-info .info-item {
-    display: flex; /* Use flex for icon alignment */
-    align-items: flex-start;
-    justify-content: center; /* Center items within the flex container */
+    display: flex;
+    align-items: flex-start; /* Align icon with top of text */
     margin-bottom: 20px;
-    text-align: left; /* Align text left within the item */
-    max-width: 300px; /* Prevent items getting too wide */
-    margin-left: auto; margin-right: auto; /* Center the item block */
 }
 
 .event-info .icon {
     font-size: 1.4em;
     color: var(--accent-color);
     margin-right: 15px;
-    flex-shrink: 0; /* Prevent icon shrinking */
-    margin-top: 5px;
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
+    margin-top: 5px; /* Adjust vertical alignment */
 }
 
 .event-info .label {
@@ -169,215 +144,182 @@ body {
     color: var(--text-color);
 }
 
-/* --- RSVP Info Section (Mobile) --- */
+
+/* --- RSVP Info --- */
 .rsvp-info {
-    text-align: center; /* Ensure section is centered */
+    text-align: center;
 }
+
 .rsvp-info p {
     margin-bottom: 15px;
 }
 
-.cta-button { /* Assume button styling is mostly correct */
+.rsvp-info a.cta-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: var(--card-bg); /* White text */
+    color: var(--card-bg); /* This should now apply! */
     padding: 12px 25px;
     border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
+    text-decoration: none; /* This should now apply! */
+    font-weight: bold; /* This should now apply! */
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin-top: 10px;
     border: none;
     cursor: pointer;
     font-size: 1em;
 }
+
 .cta-button:hover {
     background-color: var(--accent-color-darker);
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Slight lift effect */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.or-divider { /* Centered by default in text-align:center parent */
+.or-divider {
     display: flex;
     align-items: center;
     text-align: center;
     margin: 20px 0;
     color: var(--border-color);
 }
-.or-divider::before, .or-divider::after {
-    content: ''; flex: 1; border-bottom: 1px solid var(--border-color);
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
 }
-.or-divider span { padding: 0 10px; font-size: 0.9em; color: var(--text-color); }
+.or-divider span {
+    padding: 0 10px;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
 
-.rsvp-info a:not(.cta-button) { /* Style the email link */
+
+.rsvp-info a {
     color: var(--accent-color);
     text-decoration: none;
     font-weight: bold;
 }
-.rsvp-info a:not(.cta-button):hover { text-decoration: underline; }
 
-
-/* --- Countdown Timer Section (Mobile) --- */
-.countdown {
-    text-align: center; /* Ensure section is centered */
+.rsvp-info a:hover {
+    text-decoration: underline;
 }
+
+/* --- Countdown Timer --- */
+.countdown {
+    text-align: center;
+}
+
 #countdown-timer {
     display: flex;
-    justify-content: center; /* Center timer units */
-    gap: 10px; /* Space between units */
+    justify-content: center;
+    gap: 20px; /* Space between units */
     margin-top: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
+
 .timer-unit {
-    background-color: var(--bg-color);
-    padding: 10px;
+    background-color: var(--bg-color); /* Light background for units */
+    padding: 15px;
     border-radius: 5px;
-    min-width: 70px;
+    min-width: 80px; /* Minimum width for units */
     border: 1px solid var(--border-color);
 }
-.timer-unit span { display: block; font-size: 1.6em; font-weight: bold; color: var(--accent-color); line-height: 1.1; }
-.timer-unit label { display: block; font-size: 0.8em; color: var(--text-color); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
+.timer-unit span {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent-color);
+    line-height: 1.1;
+}
 
-/* --- Footer Styles (Mobile) --- */
+.timer-unit label {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* --- Footer --- */
 .invitation-footer {
     text-align: center;
     padding: 25px 30px;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); /* Slightly different background */
     border-top: 1px solid var(--border-color);
     font-style: italic;
     color: var(--text-color);
     font-size: 0.95em;
 }
 
-/* --- Animations --- */
+/* --- Animations (Optional) --- */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .animate-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* ================================================= */
-/* === Desktop Layout (Side-by-Side Columns) === */
-/* ================================================= */
-@media screen and (min-width: 992px) { /* Apply only on wider screens */
 
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+    .couple-names {
+        font-size: 2.8em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
     .invitation-card {
-        display: grid;
-        grid-template-columns: 40% 60%; /* Photo: 40%, Content: 60%. Adjust ratio if needed */
-        max-width: 950px; /* Allow card to be wider */
-        align-items: stretch; /* Make columns equal height */
+        margin: 10px auto; /* Reduce top/bottom margin slightly */
     }
-
-    .invitation-photo-column {
-        height: 100%; /* Force column to take full height */
-        position: relative;
-        overflow: hidden; /* Ensure image cover doesn't spill */
-    }
-
-    .invitation-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Scale and crop image to fill column height/width */
-        object-position: center; /* Center the crop */
-    }
-
-    .invitation-content-column {
-        padding: 30px 40px; /* Add padding inside the content column */
-        overflow-y: auto; /* Allow scrolling *only* in this column if content is too tall */
-        border-left: 1px solid var(--border-color); /* Separator line */
-        text-align: left; /* Align text left for desktop */
-    }
-
-    /* --- Adjustments within content column for desktop --- */
-    .invitation-header {
-        padding: 20px 0; /* Adjust vertical padding */
-        text-align: left; /* Align header text left */
-        border-bottom: 1px solid var(--border-color); /* Keep border */
-    }
-    .header-decoration {
-         margin-left: 0; margin-right: 0; /* Align decorations left */
-         width: 80%; /* Make decorations shorter */
-         margin: 15px 0; /* Adjust margin */
-    }
-    .couple-names, .invitation-intro, .invitation-phrase {
-         text-align: left; /* Ensure left alignment */
-    }
-
-    .invitation-details {
-        padding: 30px 0; /* Adjust vertical padding */
-    }
-
-    .invitation-details section {
-         text-align: left; /* Align section text left */
-         padding-bottom: 20px; margin-bottom: 20px; /* Adjust spacing */
-         border-bottom: 1px dashed var(--border-color); /* Keep border */
-    }
-     .invitation-details section:last-child {
-         border-bottom: none; /* Remove border on last section */
-         margin-bottom: 0; padding-bottom: 0; /* Remove spacing on last section */
-     }
-     .invitation-details h2 {
-         text-align: left; /* Align section headers left */
-     }
-
-     /* Adjust info items for left align */
-    .event-info .info-item {
-        justify-content: flex-start; /* Align icon/text to start */
-        max-width: none; /* Remove max-width */
-        margin-left: 0; margin-right: 0; /* Remove centering */
-    }
-
-    .rsvp-info, .countdown {
-         text-align: left; /* Align text left */
-    }
-    .rsvp-info p:has(> .cta-button) { /* Center button within left-aligned section */
-       text-align: center;
-    }
-     #countdown-timer { /* Align timer units left */
-          justify-content: flex-start;
-     }
-
-
-    .invitation-footer {
-        padding: 30px 0 0 0; /* Adjust padding (only top needed) */
-        background-color: transparent; /* Match card background */
-        text-align: left; /* Align footer text left */
-        border-top: 1px solid var(--border-color); /* Keep border */
-        margin-top: 10px; /* Add some space above footer */
-        font-style: normal; /* Maybe remove italic for desktop? Optional */
-    }
-}
-
-/* --- Smaller Adjustments for Tablet (Optional) --- */
-/* You might want slightly different adjustments for tablet widths */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-     /* For example, maybe keep text centered but increase card width */
-     .invitation-card {
-          max-width: 700px;
-     }
-     /* Or apply a simpler two-column grid only to details like before, */
-     /* but ensure it doesn't conflict with the base styles */
-}
-
-/* --- Adjustments for very small screens (Optional) --- */
-@media (max-width: 480px) {
-     .couple-names {
-        font-size: 2.2em; /* Further reduce name size */
-    }
-     .invitation-details h2 {
-        font-size: 1.6em; /* Further reduce heading size */
-    }
-     .invitation-header, .invitation-details, .invitation-footer, .invitation-content-column {
-        padding-left: 20px; /* Adjust padding */
+    .invitation-header, .invitation-details, .invitation-footer {
+        padding-left: 20px;
         padding-right: 20px;
     }
-    /* Adjust timer unit size for very small screens */
-     #countdown-timer { gap: 5px; }
-    .timer-unit { min-width: 60px; padding: 8px; }
-    .timer-unit span { font-size: 1.4em; }
+    #countdown-timer {
+        gap: 10px;
+    }
+    .timer-unit {
+        min-width: 70px;
+        padding: 10px;
+    }
+     .timer-unit span {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 480px) {
+     .couple-names {
+        font-size: 2.2em;
+    }
+     h2 {
+        font-size: 1.6em;
+    }
+    .invitation-header, .invitation-details, .invitation-footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+     #countdown-timer {
+        justify-content: space-around; /* Better spacing on small screens */
+    }
+    .timer-unit {
+        min-width: 60px;
+         padding: 8px;
+    }
+     .timer-unit span {
+        font-size: 1.4em;
+    }
+    .event-info .icon {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
 }
