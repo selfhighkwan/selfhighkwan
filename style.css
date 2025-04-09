@@ -356,3 +356,66 @@ h2 {
    /* Adjust padding if border removed */
     padding-bottom: 40px; /* Add slightly more padding if desired */
 }
+
+/* --- Responsive Layout for Wider Screens --- */
+@media screen and (min-width: 768px) {
+
+    /* Apply Grid to the main details container */
+    .invitation-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 20px 40px; /* Row gap, Column gap */
+        align-items: start; /* Align items to the top of their grid cell */
+        padding-top: 0; /* Adjust if needed */
+    }
+
+    /* Adjustments for sections within the grid */
+    .invitation-details section {
+        margin-bottom: 0; /* Remove bottom margin, rely on grid gap */
+        padding-bottom: 0; /* Remove bottom padding if added */
+        border-bottom: none; /* Remove the dashed border between sections */
+        /* Add padding inside sections if needed for spacing */
+        /* padding: 20px; */
+    }
+
+    /* Optionally assign sections to specific grid columns/rows if needed */
+    /* By default, they flow left-to-right, top-to-bottom */
+    /* .event-info { grid-column: 1 / 2; grid-row: 1 / 2; } */
+    /* .rsvp-info { grid-column: 2 / 3; grid-row: 1 / 2; } */
+    /* .countdown { grid-column: 2 / 3; grid-row: 2 / 3; } */ /* Stack below RSVP */
+
+     /* If countdown is meant to be below event info in the first column: */
+     /* .countdown { grid-column: 1 / 2; grid-row: 2 / 3; } */
+
+    /* Make sure sections align text nicely if they weren't already */
+    .event-info, .rsvp-info, .countdown {
+         text-align: left; /* Align text left for easier reading in columns */
+    }
+    .rsvp-info h2, .countdown h2 {
+        text-align: left; /* Align section headings left too */
+    }
+    /* Keep RSVP button centered if desired within its section */
+    .rsvp-info p:has(> .cta-button) { /* Target the paragraph holding the button */
+       text-align: center;
+    }
+     .rsvp-info .or-divider {
+         /* Adjust centering if needed */
+     }
+
+
+    /* Ensure footer stays below */
+    .invitation-footer {
+        grid-column: 1 / -1; /* Make footer span all columns if it were inside the grid */
+        /* Since footer is outside <main>, this shouldn't be needed, */
+        /* but ensures it behaves correctly if structure changes */
+         clear: both; /* Just in case of any residual float issues */
+    }
+}
+
+/* --- Ensure card doesn't get TOO wide --- */
+/* You might want to adjust the max-width for wider screens */
+@media screen and (min-width: 992px) {
+    .invitation-card {
+        max-width: 800px; /* Or adjust as desired */
+    }
+}
