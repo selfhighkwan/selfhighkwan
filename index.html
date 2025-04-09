@@ -88,6 +88,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
             backface-visibility: hidden;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -107,6 +108,13 @@
         .photo-back {
             transform: rotateY(180deg);
             background-color: white;
+            z-index: 1;
+        }
+
+        /* This fixes the text showing through on mobile */
+        .photo-card.flipped .photo-front {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .photo-card.flipped {
@@ -523,7 +531,7 @@
             <!-- Photo section with flip card effect -->
             <div class="photo-container">
                 <div class="photo-card" id="photoCard">
-                    <div class="photo-front">
+                    <div class="photo-front" id="photoFront">
                         <!-- Decorative hearts -->
                         <i class="fas fa-heart heart-decoration heart-1"></i>
                         <i class="fas fa-heart heart-decoration heart-2"></i>
@@ -536,7 +544,7 @@
                         <div class="cover-date">June 7th, 2025</div>
                         <div class="cover-message">Click to see our photo</div>
                     </div>
-                    <div class="photo-back">
+                    <div class="photo-back" id="photoBack">
                         <!-- We'll load the image dynamically with JavaScript -->
                         <div id="photoPlaceholder" style="width: 100%; height: 100%; background-color: #f9e8d2; display: flex; justify-content: center; align-items: center;">
                             <div style="text-align: center;">
@@ -630,6 +638,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             // --- Photo card flip functionality
             const photoCard = document.getElementById('photoCard');
+            const photoFront = document.getElementById('photoFront');
+            const photoBack = document.getElementById('photoBack');
             const photoContainer = document.querySelector('.photo-container');
             const photoPlaceholder = document.getElementById('photoPlaceholder');
             
@@ -671,12 +681,42 @@
             // Click to flip the card
             photoContainer.addEventListener('click', function() {
                 photoCard.classList.toggle('flipped');
+                
+                // Extra fix for mobile: explicitly handle front visibility
+                if (photoCard.classList.contains('flipped')) {
+                    setTimeout(() => {
+                        photoFront.style.visibility = 'hidden';
+                    }, 200); // Half-way through the animation
+                } else {
+                    photoFront.style.visibility = 'visible';
+                }
             });
+            
+            // Double-click prevention
+            let lastTapTime = 0;
             
             // Touch functionality for mobile
             photoContainer.addEventListener('touchend', function(e) {
                 e.preventDefault(); // Prevent default touch behavior
+                
+                // Prevent double-taps
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTapTime;
+                if (tapLength < 500 && tapLength > 0) {
+                    return false;
+                }
+                lastTapTime = currentTime;
+                
+                // Flip card and handle front visibility
                 photoCard.classList.toggle('flipped');
+                
+                if (photoCard.classList.contains('flipped')) {
+                    setTimeout(() => {
+                        photoFront.style.visibility = 'hidden';
+                    }, 200); // Half-way through the animation
+                } else {
+                    photoFront.style.visibility = 'visible';
+                }
             });
             
             // Directly check if hover is available (desktop) and add relevant behavior
