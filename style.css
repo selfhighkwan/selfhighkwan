@@ -1,421 +1,190 @@
 /* --- Global Styles & Variables --- */
-:root {
-    --bg-color: #fdfcf9; /* Soft off-white background */
-    --card-bg: #ffffff; /* White card background */
-    --text-color: #4a4a4a; /* Dark grey for readability */
+:root { /* Keep your variables */
+    --bg-color: #fdfcf9;
+    --card-bg: #ffffff;
+    --text-color: #4a4a4a;
     --heading-color: #333333;
-    --accent-color: #8B4513; /* SaddleBrown - warm, elegant */
-    --accent-color-darker: #6a360f; /* Darker accent for hover */
+    --accent-color: #8B4513;
+    --accent-color-darker: #6a360f;
     --elegant-font: 'Dancing Script', cursive;
     --modern-font: 'Montserrat', sans-serif;
     --border-color: #e0e0e0;
 }
 
-* {
+* { /* Keep your reset */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --- Simplified Body & Card Base Styles --- */
 body {
     font-family: var(--modern-font);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
-    padding: 30px 15px; /* Add padding for spacing on small screens */
-    display: flex; /* Helps center the card */
-    justify-content: center;
-    align-items: flex-start; /* Align to top */
-    min-height: 100vh;
+    padding: 30px 15px; /* Spacing around card */
 }
 
-/* --- Invitation Card Container --- */
 .invitation-card {
     background-color: var(--card-bg);
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    max-width: 650px;
+    max-width: 650px; /* Mobile-first max width */
     width: 100%;
-    margin: 0 auto; /* Center horizontally */
-    overflow: hidden; /* Ensure border-radius clips content */
+    margin: 30px auto; /* Center card */
     border: 1px solid var(--border-color);
+    overflow: hidden; /* IMPORTANT: Prevents content spillover */
+    display: block; /* Default layout: single column */
 }
 
-/* --- Header --- */
+/* === Mobile First Layout (Single Column) === */
+
+.invitation-photo-column {
+    line-height: 0; /* Remove extra space under image */
+}
+
+.invitation-photo {
+    display: block;
+    width: 100%; /* Image takes full width of column */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.invitation-content-column {
+    /* Contains header, main, footer */
+}
+
 .invitation-header {
     text-align: center;
-    padding: 40px 30px 30px 30px;
+    padding: 30px 30px 20px 30px; /* Adjust padding */
     border-bottom: 1px solid var(--border-color);
-    position: relative; /* For decoration positioning */
+    position: relative;
 }
+/* Keep other header styles (.header-decoration, .couple-names etc.) as they were */
 
-.header-decoration {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
-    width: 60%;
-    margin: 15px auto;
-}
-
-.invitation-intro {
-    font-size: 0.9em;
-    color: var(--text-color);
-    margin-bottom: 15px;
-    letter-spacing: 0.5px;
-}
-
-.couple-names {
-    font-family: var(--elegant-font);
-    font-size: 3.5em; /* Adjust as needed */
-    color: var(--accent-color);
-    margin: 10px 0;
-    line-height: 1.2;
-}
-
-.invitation-phrase {
-    font-size: 1.1em;
-    margin-top: 15px;
-    color: var(--heading-color);
-}
-
-/* --- Main Details --- */
 .invitation-details {
     padding: 30px;
+    display: block; /* Ensure default is block */
 }
 
 .invitation-details section {
-    margin-bottom: 40px;
-    padding-bottom: 30px;
-    border-bottom: 1px dashed var(--border-color); /* Subtle separator */
+    margin-bottom: 30px; /* Spacing between sections */
+    padding-bottom: 30px; /* Spacing within sections */
+    border-bottom: 1px dashed var(--border-color); /* Separator line */
+    text-align: center; /* Center align text on mobile */
 }
-
 .invitation-details section:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
 }
-
-h2 {
-    font-family: var(--elegant-font);
-    font-size: 2em;
-    color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-/* --- Event Info Section --- */
-.event-info .info-item {
-    display: flex;
-    align-items: flex-start; /* Align icon with top of text */
-    margin-bottom: 20px;
-}
-
-.event-info .icon {
-    font-size: 1.4em;
-    color: var(--accent-color);
-    margin-right: 15px;
-    width: 25px; /* Fixed width for alignment */
-    text-align: center;
-    margin-top: 5px; /* Adjust vertical alignment */
-}
-
-.event-info .label {
-    font-weight: 700;
-    color: var(--heading-color);
-    display: block;
-    margin-bottom: 3px;
-}
-
-.event-info p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-.event-info .address {
-    font-style: italic;
-    color: var(--text-color);
-    font-size: 0.95em;
-}
-
-.reception-follow {
-    text-align: center;
-    margin-top: 25px;
-    font-style: italic;
-    color: var(--text-color);
-}
-
-
-/* --- RSVP Info --- */
-.rsvp-info {
-    text-align: center;
-}
-
-.rsvp-info p {
-    margin-bottom: 15px;
-}
-
-.rsvp-info a.cta-button {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--card-bg); /* This should now apply! */
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none; /* This should now apply! */
-    font-weight: bold; /* This should now apply! */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.cta-button:hover {
-    background-color: var(--accent-color-darker);
-    transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.or-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 20px 0;
-    color: var(--border-color);
-}
-.or-divider::before,
-.or-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--border-color);
-}
-.or-divider span {
-    padding: 0 10px;
-    font-size: 0.9em;
-    color: var(--text-color);
-}
-
-
-.rsvp-info a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.rsvp-info a:hover {
-    text-decoration: underline;
-}
-
-/* --- Countdown Timer --- */
-.countdown {
-    text-align: center;
-}
-
-#countdown-timer {
-    display: flex;
+/* Keep specific section styles (.event-info, .info-item, .icon, .label, .address, .rsvp-info, .cta-button, .countdown, #countdown-timer, .timer-unit etc.) as they were, ensuring they work with centered text */
+.event-info .info-item { /* Adjust icon layout for center align */
     justify-content: center;
-    gap: 20px; /* Space between units */
-    margin-top: 20px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+     /* If text alignment issues, might need: */
+     /* display: inline-flex; max-width: 100%; */
+}
+.event-info .icon { /* Reduce margin if needed */
+     margin-right: 10px;
+}
+.event-info .label, .event-info p { /* Ensure text align center works */
+     /* text-align: center; Should inherit */
 }
 
-.timer-unit {
-    background-color: var(--bg-color); /* Light background for units */
-    padding: 15px;
-    border-radius: 5px;
-    min-width: 80px; /* Minimum width for units */
-    border: 1px solid var(--border-color);
-}
-
-.timer-unit span {
-    display: block;
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--accent-color);
-    line-height: 1.1;
-}
-
-.timer-unit label {
-    display: block;
-    font-size: 0.8em;
-    color: var(--text-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 5px;
-}
-
-/* --- Footer --- */
 .invitation-footer {
     text-align: center;
     padding: 25px 30px;
-    background-color: var(--bg-color); /* Slightly different background */
+    background-color: var(--bg-color);
     border-top: 1px solid var(--border-color);
     font-style: italic;
     color: var(--text-color);
     font-size: 0.95em;
 }
 
-/* --- Animations (Optional) --- */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* === Desktop Layout (Side-by-Side Columns) === */
+@media screen and (min-width: 992px) { /* Apply only on wider screens */
 
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    body {
-        padding: 20px 10px;
-    }
-    .couple-names {
-        font-size: 2.8em;
-    }
-    h2 {
-        font-size: 1.8em;
-    }
     .invitation-card {
-        margin: 10px auto; /* Reduce top/bottom margin slightly */
-    }
-    .invitation-header, .invitation-details, .invitation-footer {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    #countdown-timer {
-        gap: 10px;
-    }
-    .timer-unit {
-        min-width: 70px;
-        padding: 10px;
-    }
-     .timer-unit span {
-        font-size: 1.6em;
-    }
-}
-
-@media (max-width: 480px) {
-     .couple-names {
-        font-size: 2.2em;
-    }
-     h2 {
-        font-size: 1.6em;
-    }
-    .invitation-header, .invitation-details, .invitation-footer {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-     #countdown-timer {
-        justify-content: space-around; /* Better spacing on small screens */
-    }
-    .timer-unit {
-        min-width: 60px;
-         padding: 8px;
-    }
-     .timer-unit span {
-        font-size: 1.4em;
-    }
-    .event-info .icon {
-        margin-right: 10px;
-        font-size: 1.2em;
-    }
-}
-
-/* --- Styles for Invitation Photo --- */
-.invitation-photo-section {
-    padding: 0; /* No extra padding needed as image fills width */
-    /* Optional: Add space below the photo before the main details */
-    margin-bottom: 30px;
-    /* Optional: If you want a line above/below the photo */
-    /* border-top: 1px solid var(--border-color); */
-    /* border-bottom: 1px solid var(--border-color); */
-    /* padding-top: 30px; */ /* Add padding if using border-top */
-    /* padding-bottom: 30px; */ /* Add padding if using border-bottom */
-     line-height: 0; /* Prevents potential extra space below the image */
-}
-
-.invitation-photo {
-    display: block; /* Treat image as a block element */
-    max-width: 100%; /* Make image responsive, scale down if needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: auto; /* Helps with centering if needed, though max-width usually handles it */
-    margin-right: auto;
-    /* Optional: Add subtle rounded corners to match card? */
-    /* border-radius: 5px; */
-    /* Optional: Add a very subtle border? */
-    /* border: 1px solid var(--border-color); */
-}
-
-/* --- Adjust Header Border --- */
-/* Optional: Remove the bottom border from the header if the photo follows directly */
-.invitation-header {
-   /* border-bottom: 1px solid var(--border-color); */ /* Comment out or remove this line */
-   /* Adjust padding if border removed */
-    padding-bottom: 40px; /* Add slightly more padding if desired */
-}
-
-/* --- Responsive Layout for Wider Screens --- */
-@media screen and (min-width: 768px) {
-
-    /* Apply Grid to the main details container */
-    .invitation-details {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two equal columns */
-        gap: 20px 40px; /* Row gap, Column gap */
-        align-items: start; /* Align items to the top of their grid cell */
-        padding-top: 0; /* Adjust if needed */
+        grid-template-columns: 40% 60%; /* Photo: 40%, Content: 60%. Adjust ratio if needed */
+        max-width: 950px; /* Allow card to be wider */
+        align-items: stretch; /* Make columns equal height */
     }
 
-    /* Adjustments for sections within the grid */
+    .invitation-photo-column {
+        height: 100%; /* Force column to take full height */
+        position: relative; /* Needed for absolute positioning if required, but cover should work */
+         overflow: hidden; /* Ensure image cover doesn't spill */
+    }
+
+    .invitation-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Scale and crop image to fill column height/width */
+        object-position: center; /* Center the crop */
+    }
+
+    .invitation-content-column {
+        padding: 30px 40px; /* Add padding inside the content column */
+        overflow-y: auto; /* Allow scrolling *only* in this column if content is too tall */
+        border-left: 1px solid var(--border-color); /* Separator line */
+        text-align: left; /* Align text left for desktop */
+    }
+
+    /* Adjustments within content column for desktop */
+    .invitation-header {
+        padding: 20px 0; /* Adjust vertical padding */
+        text-align: left; /* Align header text left */
+    }
+    .header-decoration {
+         margin-left: 0; margin-right: 0; /* Adjust decorations if needed */
+         /* Maybe make them shorter or align left */
+         /* width: 80%; margin: 15px 0; */
+    }
+    .couple-names, .invitation-intro, .invitation-phrase {
+         text-align: left; /* Ensure left alignment */
+    }
+
+    .invitation-details {
+        padding: 30px 0; /* Adjust vertical padding */
+    }
+
     .invitation-details section {
-        margin-bottom: 0; /* Remove bottom margin, rely on grid gap */
-        padding-bottom: 0; /* Remove bottom padding if added */
-        border-bottom: none; /* Remove the dashed border between sections */
-        /* Add padding inside sections if needed for spacing */
-        /* padding: 20px; */
+         text-align: left; /* Align section text left */
+         padding-bottom: 20px; margin-bottom: 20px; /* Adjust spacing */
+    }
+     .invitation-details h2 {
+         text-align: left; /* Align section headers left */
+     }
+     /* Adjust info items if needed */
+    .event-info .info-item {
+        justify-content: flex-start; /* Align icon/text to start */
     }
 
-    /* Optionally assign sections to specific grid columns/rows if needed */
-    /* By default, they flow left-to-right, top-to-bottom */
-    /* .event-info { grid-column: 1 / 2; grid-row: 1 / 2; } */
-    /* .rsvp-info { grid-column: 2 / 3; grid-row: 1 / 2; } */
-    /* .countdown { grid-column: 2 / 3; grid-row: 2 / 3; } */ /* Stack below RSVP */
-
-     /* If countdown is meant to be below event info in the first column: */
-     /* .countdown { grid-column: 1 / 2; grid-row: 2 / 3; } */
-
-    /* Make sure sections align text nicely if they weren't already */
-    .event-info, .rsvp-info, .countdown {
-         text-align: left; /* Align text left for easier reading in columns */
+    .rsvp-info, .countdown {
+         text-align: left; /* Align text left */
     }
-    .rsvp-info h2, .countdown h2 {
-        text-align: left; /* Align section headings left too */
-    }
-    /* Keep RSVP button centered if desired within its section */
-    .rsvp-info p:has(> .cta-button) { /* Target the paragraph holding the button */
+    .rsvp-info p:has(> .cta-button) { /* Center button within left-aligned text */
        text-align: center;
     }
-     .rsvp-info .or-divider {
-         /* Adjust centering if needed */
+    .rsvp-info .or-divider span { /* Adjust centering */
+        /* display: inline-block; width: auto; */
+    }
+     #countdown-timer { /* Align timer units left */
+          justify-content: flex-start;
      }
 
 
-    /* Ensure footer stays below */
     .invitation-footer {
-        grid-column: 1 / -1; /* Make footer span all columns if it were inside the grid */
-        /* Since footer is outside <main>, this shouldn't be needed, */
-        /* but ensures it behaves correctly if structure changes */
-         clear: both; /* Just in case of any residual float issues */
+        padding: 30px 0 0 0; /* Adjust padding (only top needed) */
+        background-color: transparent; /* Match card background */
+        text-align: left; /* Align footer text left */
+        border-top: 1px solid var(--border-color);
     }
-}
 
-/* --- Ensure card doesn't get TOO wide --- */
-/* You might want to adjust the max-width for wider screens */
-@media screen and (min-width: 992px) {
-    .invitation-card {
-        max-width: 800px; /* Or adjust as desired */
+    /* Ensure animations still work */
+    .animate-on-scroll {
+       /* No changes needed, should still work */
     }
 }
