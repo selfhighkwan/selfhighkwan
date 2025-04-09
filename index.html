@@ -1,101 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Invited! [Couple's Names]</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
 <body>
     <div class="invitation-card">
-        <header class="invitation-header">
-            <div class="header-decoration top"></div> <p class="invitation-intro">Together with their families</p>
-            <h1 class="couple-names">Clarence &amp; Eugenia</h1>
-            <p class="invitation-phrase">request the pleasure of your company <br> at their wedding celebration</p>
-            <div class="header-decoration bottom"></div> </header>
-    </div>    
-    <div class="invitation-photo-section">
-	   <img src="photo1.png" alt="Clarence and Eugenia smiling together" class="invitation-photo">
-    </div>
 
-    
-	
-        <main class="invitation-details">
+        <div class="invitation-photo-column">
+            <img src="photo1.jpg" alt="[Name 1] and [Name 2] smiling together" class="invitation-photo">
+            </div>
 
-            <section class="event-info animate-on-scroll">
-                <h2>When & Where</h2>
-                <div class="info-item">
-                    <i class="fas fa-calendar-alt icon"></i>
-                    <div>
-                        <span class="label">Date:</span>
-                        <p>Saturday, June 7th, 2025</p>
+        <div class="invitation-content-column">
+            <header class="invitation-header">
+                <div class="header-decoration top"></div>
+                <p class="invitation-intro">Together with their families</p>
+                <h1 class="couple-names">[Name 1] &amp; [Name 2]</h1>
+                <p class="invitation-phrase">request the pleasure of your company <br> at their wedding celebration</p>
+                <div class="header-decoration bottom"></div>
+            </header>
+
+            <main class="invitation-details">
+                <section class="event-info animate-on-scroll">
+                    <h2>When & Where</h2>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt icon"></i>
+                        <div>
+                            <span class="label">Date:</span>
+                            <p>[Full Date, e.g., Saturday, October 26th, 2025]</p>
+                        </div>
                     </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock icon"></i>
-                    <div>
-                        <span class="label">Time:</span>
-                        <p>5:30 PM  Wedding Ceremony</p>
-			<p>8:00 PM  Wedding Banquet</p>
-
+                    <div class="info-item">
+                        <i class="fas fa-clock icon"></i>
+                        <div>
+                            <span class="label">Time:</span>
+                            <p>[Time, e.g., 4:00 PM]</p>
+                        </div>
                     </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    <div>
-                        <span class="label">Venue:</span>
-                        <p>Club One</p>
-                        <p class="address">1/F, Empire Centre,<br>68 Mody Road, Tsim Sha Tsui</p>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <div>
+                            <span class="label">Venue:</span>
+                            <p>[Venue Name]</p>
+                            <p class="address">[Venue Address Line 1]<br>[Venue Address Line 2]</p>
+                        </div>
                     </div>
-                </div>
-                <p class="reception-follow">Reception to follow immediately</p>
-            </section>
+                    <p class="reception-follow">Reception to follow immediately</p>
+                </section>
 
-            <section class="rsvp-info animate-on-scroll">
-                <h2>RSVP</h2>
-                <p>Your reply is kindly requested by 30th April</p>
-                <p>Please visit our wedding website to respond:</p>
-                <a href="[Your Wedding Website Link]" target="_blank" class="cta-button">Visit Website & RSVP</a>
-                <p class="or-divider"><span>or</span></p>
-                 <p>Or email us at: <a href="mailto:clarencekwan@alumni.cuhk.net?subject=Wedding RSVP -  Clarence %26 Eugenia">clarencekwan@alumni.cuhk.net</a></p>
-            </section>
-	    <section class="countdown animate-on-scroll">
-                <h2>Counting Down the Moments</h2>
-                <div id="countdown-timer">
-                    <div class="timer-unit">
-                        <span id="days">00</span>
-                        <label>Days</label>
+                <section class="rsvp-info animate-on-scroll">
+                    <h2>RSVP</h2>
+                     <p>Your reply is kindly requested by [RSVP Date]</p>
+                    <p>Please visit our wedding website to respond:</p>
+                    <a href="[Your Wedding Website Link]" target="_blank" class="cta-button">Visit Website & RSVP</a>
+                    <p class="or-divider"><span>or</span></p>
+                    <p>Email us at: <a href="mailto:[Your Email]?subject=Wedding RSVP - [Your Last Names]">[Your Email]</a></p>
+                </section>
+
+                <section class="countdown animate-on-scroll">
+                    <h2>Counting Down the Moments</h2>
+                    <div id="countdown-timer">
+                        <div class="timer-unit"><span id="days">00</span><label>Days</label></div>
+                        <div class="timer-unit"><span id="hours">00</span><label>Hours</label></div>
+                        <div class="timer-unit"><span id="minutes">00</span><label>Minutes</label></div>
+                        <div class="timer-unit"><span id="seconds">00</span><label>Seconds</label></div>
                     </div>
-                    <div class="timer-unit">
-                        <span id="hours">00</span>
-                        <label>Hours</label>
-                    </div>
-                    <div class="timer-unit">
-                        <span id="minutes">00</span>
-                        <label>Minutes</label>
-                    </div>
-                    <div class="timer-unit">
-                        <span id="seconds">00</span>
-                        <label>Seconds</label>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
-           
-
-        </main>
- 
-        <footer class="invitation-footer">
-            <p>We look forward to celebrating with you!</p>
-        </footer>     
-
-
-    </div>
-
-    <script src="script.js"></script>
+            <footer class="invitation-footer">
+                <p>We look forward to celebrating with you!</p>
+            </footer>
+        </div> </div> <script src="script.js"></script>
 </body>
-</html>
