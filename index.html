@@ -71,14 +71,88 @@
             padding: 20px;
             position: relative;
             background-color: var(--bg-color);
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .photo-card {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .photo-front, .photo-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .photo-front {
+            background: linear-gradient(135deg, #fdf6e9, #f9e8d2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .photo-back {
+            transform: rotateY(180deg);
+            background-color: white;
+        }
+
+        .photo-card.flipped {
+            transform: rotateY(180deg);
         }
 
         .couple-photo {
             width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cover-heart {
+            color: var(--accent-color);
+            font-size: 60px;
+            margin-bottom: 20px;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .cover-names {
+            font-family: var(--elegant-font);
+            color: var(--accent-color);
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cover-date {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .cover-message {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--accent-color-darker);
+        }
+
+        .photo-container:hover .cover-heart {
+            transform: scale(1.1);
         }
 
         .details-container {
@@ -309,6 +383,41 @@
             transform: translateY(0);
         }
 
+        /* Heart decoration */
+        .heart-decoration {
+            position: absolute;
+            opacity: 0.1;
+            color: var(--accent-color);
+        }
+
+        .heart-1 {
+            top: 10%;
+            left: 10%;
+            font-size: 25px;
+            transform: rotate(-20deg);
+        }
+
+        .heart-2 {
+            top: 15%;
+            right: 15%;
+            font-size: 18px;
+            transform: rotate(15deg);
+        }
+
+        .heart-3 {
+            bottom: 15%;
+            left: 18%;
+            font-size: 20px;
+            transform: rotate(10deg);
+        }
+
+        .heart-4 {
+            bottom: 20%;
+            right: 10%;
+            font-size: 22px;
+            transform: rotate(-15deg);
+        }
+
         /* --- Responsive Design --- */
         @media (max-width: 900px) {
             .photo-container, .details-container {
@@ -319,8 +428,9 @@
                 padding: 15px;
             }
             
-            .couple-photo {
+            .photo-card {
                 max-width: 350px;
+                height: 450px;
             }
         }
 
@@ -335,6 +445,10 @@
             
             .couple-names {
                 font-size: 2.4em;
+            }
+            
+            .cover-names {
+                font-size: 2em;
             }
             
             h2 {
@@ -359,11 +473,19 @@
             #countdown-timer {
                 gap: 8px;
             }
+            
+            .photo-card {
+                height: 400px;
+            }
         }
 
         @media (max-width: 400px) {
             .couple-names {
                 font-size: 2em;
+            }
+            
+            .cover-names {
+                font-size: 1.8em;
             }
             
             h2 {
@@ -387,6 +509,10 @@
             .header-decoration {
                 margin: 8px auto;
             }
+            
+            .photo-card {
+                height: 350px;
+            }
         }
     </style>
 </head>
@@ -394,12 +520,32 @@
 
     <div class="invitation-card">
         <div class="card-content">
-            <!-- Photo section -->
+            <!-- Photo section with flip card effect -->
             <div class="photo-container">
-                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' width='1' height='1' %3E%3C/svg%3E" 
-                     class="couple-photo" 
-                     id="couplePhoto"
-                     alt="Clarence and Eugenia">
+                <div class="photo-card" id="photoCard">
+                    <div class="photo-front">
+                        <!-- Decorative hearts -->
+                        <i class="fas fa-heart heart-decoration heart-1"></i>
+                        <i class="fas fa-heart heart-decoration heart-2"></i>
+                        <i class="fas fa-heart heart-decoration heart-3"></i>
+                        <i class="fas fa-heart heart-decoration heart-4"></i>
+                        
+                        <!-- Cover content -->
+                        <i class="fas fa-heart cover-heart"></i>
+                        <div class="cover-names">Clarence &amp; Eugenia</div>
+                        <div class="cover-date">June 7th, 2025</div>
+                        <div class="cover-message">Click to see our photo</div>
+                    </div>
+                    <div class="photo-back">
+                        <!-- We'll load the image dynamically with JavaScript -->
+                        <div id="photoPlaceholder" style="width: 100%; height: 100%; background-color: #f9e8d2; display: flex; justify-content: center; align-items: center;">
+                            <div style="text-align: center;">
+                                <i class="fas fa-spin fa-spinner" style="font-size: 30px; color: #8B4513;"></i>
+                                <p style="color: #8B4513; margin-top: 10px;">Loading photo...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Details section -->
@@ -482,105 +628,69 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Render couple photo
-            const renderCouplePhoto = () => {
-                // Create an SVG placeholder with the correct aspect ratio
-                const imgPlaceholder = document.getElementById('couplePhoto');
-                
-                // Create a new image element
-                const img = new Image();
-                
-                // When the image loads, convert it to a data URL
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    // Set canvas dimensions to match the image
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    
-                    // Draw the image on the canvas
-                    ctx.drawImage(img, 0, 0);
-                    
-                    // Convert canvas to data URL
-                    try {
-                        const dataUrl = canvas.toDataURL('image/jpeg');
-                        imgPlaceholder.src = dataUrl;
-                    } catch (e) {
-                        console.error('Error creating data URL:', e);
-                        // If there's an error, use a generated placeholder
-                        generatePlaceholderImage();
-                    }
-                };
-                
-                img.onerror = function() {
-                    console.error('Error loading image');
-                    generatePlaceholderImage();
-                };
-                
-                // Create a romantic couple placeholder if image fails to load
-                function generatePlaceholderImage() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    canvas.width = 400;
-                    canvas.height = 600;
-                    
-                    // Create gradient background
-                    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                    gradient.addColorStop(0, '#fdf6e9');
-                    gradient.addColorStop(1, '#f9e8d2');
-                    ctx.fillStyle = gradient;
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Draw decorative elements
-                    ctx.fillStyle = '#8B4513';
-                    ctx.font = 'bold 28px Dancing Script, cursive';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Clarence & Eugenia', canvas.width/2, canvas.height/2);
-                    
-                    ctx.font = 'italic 16px Montserrat, sans-serif';
-                    ctx.fillText('June 7th, 2025', canvas.width/2, canvas.height/2 + 40);
-                    
-                    // Draw hearts
-                    ctx.fillStyle = '#a05c2c';
-                    drawHeart(ctx, canvas.width/2, canvas.height/2 - 60, 30);
-                    
-                    imgPlaceholder.src = canvas.toDataURL('image/jpeg');
-                }
-                
-                function drawHeart(ctx, x, y, size) {
-                    ctx.beginPath();
-                    ctx.moveTo(x, y + size / 4);
-                    ctx.bezierCurveTo(
-                        x, y, 
-                        x - size / 2, y, 
-                        x - size / 2, y + size / 4
-                    );
-                    ctx.bezierCurveTo(
-                        x - size / 2, y + size / 2, 
-                        x, y + size * 3/4, 
-                        x, y + size
-                    );
-                    ctx.bezierCurveTo(
-                        x, y + size * 3/4, 
-                        x + size / 2, y + size / 2, 
-                        x + size / 2, y + size / 4
-                    );
-                    ctx.bezierCurveTo(
-                        x + size / 2, y, 
-                        x, y, 
-                        x, y + size / 4
-                    );
-                    ctx.fill();
-                }
-                
-                // Set the source of the image to the uploaded file
-                // For demo purposes, I'm using the first frame of the image
-                img.src = "photo1.png";
+            // --- Photo card flip functionality
+            const photoCard = document.getElementById('photoCard');
+            const photoContainer = document.querySelector('.photo-container');
+            const photoPlaceholder = document.getElementById('photoPlaceholder');
+            
+            // Create backup image data to use if the file doesn't load
+            const fallbackCouple = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 400 500">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fdf6e9;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f9e8d2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="500" fill="url(#grad)" />
+                    <text x="200" y="250" font-family="'Dancing Script', cursive" font-size="28" text-anchor="middle" fill="#8B4513" font-weight="bold">Clarence & Eugenia</text>
+                    <text x="200" y="290" font-family="'Montserrat', sans-serif" font-size="16" text-anchor="middle" fill="#8B4513" font-style="italic">June 7th, 2025</text>
+                    <path d="M200,180 C210,160 240,160 240,180 C240,200 200,220 200,220 C200,220 160,200 160,180 C160,160 190,160 200,180 Z" fill="#a05c2c" />
+                </svg>
+            `;
+            
+            // Load the real image
+            const realPhoto = new Image();
+            realPhoto.onload = function() {
+                // Replace the placeholder with the actual image
+                photoPlaceholder.innerHTML = '';
+                photoPlaceholder.style.background = 'white';
+                photoPlaceholder.appendChild(realPhoto);
+                realPhoto.className = 'couple-photo';
             };
             
-            renderCouplePhoto();
+            realPhoto.onerror = function() {
+                console.error('Failed to load image');
+                // Use SVG fallback if image fails to load
+                photoPlaceholder.innerHTML = fallbackCouple;
+            };
+            
+            // Set the source with a timestamp to avoid caching issues
+            realPhoto.src = 'photo1.png?' + new Date().getTime();
+            
+            // Click to flip the card
+            photoContainer.addEventListener('click', function() {
+                photoCard.classList.toggle('flipped');
+            });
+            
+            // Touch functionality for mobile
+            photoContainer.addEventListener('touchend', function(e) {
+                e.preventDefault(); // Prevent default touch behavior
+                photoCard.classList.toggle('flipped');
+            });
+            
+            // Directly check if hover is available (desktop) and add relevant behavior
+            if (window.matchMedia("(hover: hover)").matches) {
+                photoContainer.addEventListener('mouseenter', function() {
+                    document.querySelector('.cover-heart').style.transform = 'scale(1.1)';
+                });
+                
+                photoContainer.addEventListener('mouseleave', function() {
+                    if (!photoCard.classList.contains('flipped')) {
+                        document.querySelector('.cover-heart').style.transform = 'scale(1)';
+                    }
+                });
+            }
 
             // --- Countdown Timer ---
             const countdownDate = new Date("June 7, 2025 17:30:00").getTime();
