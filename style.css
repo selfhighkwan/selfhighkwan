@@ -323,3 +323,36 @@ h2 {
         font-size: 1.2em;
     }
 }
+
+/* --- Styles for Invitation Photo --- */
+.invitation-photo-section {
+    padding: 0; /* No extra padding needed as image fills width */
+    /* Optional: Add space below the photo before the main details */
+    margin-bottom: 30px;
+    /* Optional: If you want a line above/below the photo */
+    /* border-top: 1px solid var(--border-color); */
+    /* border-bottom: 1px solid var(--border-color); */
+    /* padding-top: 30px; */ /* Add padding if using border-top */
+    /* padding-bottom: 30px; */ /* Add padding if using border-bottom */
+     line-height: 0; /* Prevents potential extra space below the image */
+}
+
+.invitation-photo {
+    display: block; /* Treat image as a block element */
+    max-width: 100%; /* Make image responsive, scale down if needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: auto; /* Helps with centering if needed, though max-width usually handles it */
+    margin-right: auto;
+    /* Optional: Add subtle rounded corners to match card? */
+    /* border-radius: 5px; */
+    /* Optional: Add a very subtle border? */
+    /* border: 1px solid var(--border-color); */
+}
+
+/* --- Adjust Header Border --- */
+/* Optional: Remove the bottom border from the header if the photo follows directly */
+.invitation-header {
+   /* border-bottom: 1px solid var(--border-color); */ /* Comment out or remove this line */
+   /* Adjust padding if border removed */
+    padding-bottom: 40px; /* Add slightly more padding if desired */
+}
