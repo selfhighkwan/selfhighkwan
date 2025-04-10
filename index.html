@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* --- Global Styles & Variables --- */
+
+
+        
         :root {
             --bg-color: #fdfcf9; /* Soft off-white background */
             --card-bg: #ffffff; /* White card background */
@@ -530,7 +533,49 @@
     </style>
 </head>
 <body>
+<div class="language-selector">
+    <a href="index.html" class="lang-tab active">English</a>
+    <a href="index-zh.html" class="lang-tab">中文</a>
+</div>
 
+<style>
+    .language-selector {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    .lang-tab {
+        padding: 8px 15px;
+        text-decoration: none;
+        color: var(--accent-color);
+        font-family: var(--modern-font);
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+    }
+    
+    .lang-tab:last-child {
+        border-bottom: none;
+    }
+    
+    .lang-tab.active {
+        background-color: rgba(139, 69, 19, 0.1);
+        font-weight: bold;
+    }
+    
+    .lang-tab:hover:not(.active) {
+        background-color: rgba(139, 69, 19, 0.05);
+    }
+</style>
     <div class="invitation-card">
         <div class="card-content">
             <!-- Photo section with flip card effect -->
