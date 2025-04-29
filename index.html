@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Invited! Clarence &amp; Eugenia</title>
+    <title>誠摯邀請！Clarence & Eugenia</title>
     
     <!-- Add these Open Graph tags -->
-    <meta property="og:title" content="You're Invited! Clarence & Eugenia">
-    <meta property="og:description" content="We cordially invite you to celebrate our wedding">
+    <meta property="og:title" content="喜結良緣！Clarence & Eugenia">
+    <meta property="og:description" content="誠摯邀請您參加一對新人的婚禮">
+       <meta property="og:url" content="https://selfhighkwan.github.io/selfhighkwan">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* --- Global Styles & Variables --- */
-
-
-        
         :root {
             --bg-color: #fdfcf9; /* Soft off-white background */
             --card-bg: #ffffff; /* White card background */
@@ -28,6 +26,8 @@
             --accent-color-darker: #6a360f; /* Darker accent for hover */
             --elegant-font: 'Dancing Script', cursive;
             --modern-font: 'Montserrat', sans-serif;
+            --chinese-font: 'Noto Serif TC', serif;
+            --chinese-heading: 'Noto Sans TC', sans-serif;
             --border-color: #e0e0e0;
         }
 
@@ -47,6 +47,44 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+        }
+
+        /* --- Language Selector --- */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .lang-tab {
+            padding: 8px 15px;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-family: var(--modern-font);
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        
+        .lang-tab:last-child {
+            border-bottom: none;
+        }
+        
+        .lang-tab.active {
+            background-color: rgba(139, 69, 19, 0.1);
+            font-weight: bold;
+        }
+        
+        .lang-tab:hover:not(.active) {
+            background-color: rgba(139, 69, 19, 0.05);
         }
 
         /* --- Invitation Card Container --- */
@@ -304,7 +342,7 @@
         .cta-button:hover {
             background-color: var(--accent-color-lighter);
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .or-divider {
@@ -434,6 +472,35 @@
             transform: rotate(-15deg);
         }
 
+        /* --- Chinese Specific Styles --- */
+        .zh-text {
+            font-family: var(--chinese-font);
+        }
+        
+        h2.zh-text {
+            font-family: var(--chinese-heading);
+            font-weight: 500;
+        }
+        
+        .label.zh-text {
+            font-family: var(--chinese-heading);
+        }
+        
+        .timer-unit label.zh-text {
+            font-family: var(--chinese-heading);
+        }
+        
+        .cover-date.zh-text, 
+        .cover-message.zh-text,
+        .invitation-intro.zh-text,
+        .invitation-phrase.zh-text,
+        .reception-follow.zh-text,
+        .rsvp-info p.zh-text,
+        .or-divider span.zh-text,
+        .invitation-footer p.zh-text {
+            font-family: var(--chinese-font);
+        }
+
         /* --- Responsive Design --- */
         @media (max-width: 900px) {
             .photo-container, .details-container {
@@ -530,51 +597,13 @@
                 height: 350px;
             }
         }
-    
-    
-    .language-selector {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
-    
-    .lang-tab {
-        padding: 8px 15px;
-        text-decoration: none;
-        color: var(--accent-color);
-        font-family: var(--modern-font);
-        font-size: 14px;
-        text-align: center;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(139, 69, 19, 0.1);
-    }
-    
-    .lang-tab:last-child {
-        border-bottom: none;
-    }
-    
-    .lang-tab.active {
-        background-color: rgba(139, 69, 19, 0.1);
-        font-weight: bold;
-    }
-    
-    .lang-tab:hover:not(.active) {
-        background-color: rgba(139, 69, 19, 0.05);
-    }
     </style>
 </head>
 <body>
-
+    <!-- Language selector -->
     <div class="language-selector">
-        <a href="index.html" class="lang-tab active">English</a>
-        <a href="index-zh.html" class="lang-tab">中文</a>
+        <a href="index.html" class="lang-tab">English</a>
+        <a href="index-zh.html" class="lang-tab active">中文</a>
     </div>
 
     <div class="invitation-card">
@@ -592,15 +621,15 @@
                         <!-- Cover content -->
                         <i class="fas fa-heart cover-heart"></i>
                         <div class="cover-names">Clarence &amp; Eugenia</div>
-                        <div class="cover-date">June 7th, 2025</div>
-                        <div class="cover-message">Click to see our photo</div>
+                        <div class="cover-date zh-text">2025年6月7日</div>
+                        <div class="cover-message zh-text">點擊查看新人的照片</div>
                     </div>
                     <div class="photo-back" id="photoBack">
                         <!-- We'll load the image dynamically with JavaScript -->
                         <div id="photoPlaceholder" style="width: 100%; height: 100%; background-color: #f9e8d2; display: flex; justify-content: center; align-items: center;">
                             <div style="text-align: center;">
                                 <i class="fas fa-spin fa-spinner" style="font-size: 30px; color: #8B4513;"></i>
-                                <p style="color: #8B4513; margin-top: 10px;">Loading photo...</p>
+                                <p style="color: #8B4513; margin-top: 10px;" class="zh-text">正在加載照片...</p>
                             </div>
                         </div>
                     </div>
@@ -611,68 +640,69 @@
             <div class="details-container">
                 <header class="invitation-header">
                     <div class="header-decoration"></div>
-                    <p class="invitation-intro">Together with their families</p>
+                    <p class="invitation-intro zh-text">喜結良緣</p>
                     <h1 class="couple-names">Clarence &amp; Eugenia</h1>
-                    <p class="invitation-phrase">request the pleasure of your company<br>at their wedding celebration</p>
+                    <p class="invitation-phrase zh-text">敬邀您蒞臨參加庭光和鈺均的婚禮</p>
                     <div class="header-decoration"></div>
                 </header>
 
                 <main class="invitation-details">
                     <section class="event-info animate-on-scroll">
-                        <h2>When & Where</h2>
+                        <h2 class="zh-text">婚禮詳情</h2>
                         <div class="info-item">
                             <i class="fas fa-calendar-alt icon"></i>
                             <div>
-                                <span class="label">Date:</span>
-                                <p>Saturday, June 7th, 2025</p>
+                                <span class="label zh-text">日期：</span>
+                                <p class="zh-text">二零二五年六月七日（星期六）</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-clock icon"></i>
                             <div>
-                                <span class="label">Time:</span>
-                                <p>5:30 PM  Wedding Ceremony</p>
-                                <p>8:00 PM  Wedding Banquet</p>
+                                <span class="label zh-text">時間：</span>
+                                <p class="zh-text">五時恭候</p>
+                                 <p class="zh-text">五時半證婚儀式</p>
+                                <p class="zh-text">八時入席</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt icon"></i>
                             <div>
-                                <span class="label">Venue:</span>
-                                <p>Club One</p>
-                                <p class="address">1/F, Empire Centre,<br>68 Mody Road, Tsim Sha Tsui</p>
+                                <span class="label zh-text">地點：</span>
+                                <p class="zh-text">維港皇宴</p>
+                                <p class="address zh-text">尖東尖沙咀麼地道68號帝國中心1樓</p>
                             </div>
                         </div>
-                        <p class="reception-follow">Reception to follow immediately</p>
+                       
                     </section>
 
                     <section class="rsvp-info animate-on-scroll">
-                        <h2>RSVP</h2>
-                        <p>Your reply is kindly requested by 4th May</p>
-                        <p>Please visit our wedding form to respond:</p>
-                        <a href="https://forms.gle/edxAWvqv2s6J2PDH6" target="_blank" class="cta-button">Visit Form & RSVP</a>
-                        <p class="or-divider"><span>or</span></p>
-                        <p>Email us at: <a href="mailto:clarencekwan@alumni.cuhk.net?subject=Wedding RSVP -  Clarence %26 Eugenia">clarencekwan@alumni.cuhk.net</a></p>
+                        <h2 class="zh-text">敬請回覆</h2>
+                        <p class="zh-text">請於五月四日前回覆</p>
+                        <p class="zh-text">請瀏覽表格回覆：</p>
+                        <a href="https://forms.gle/edxAWvqv2s6J2PDH6" target="_blank" class="cta-button zh-text">瀏覽表格並回覆</a>
+                        <p class="or-divider"><span class="zh-text">或</span></p>
+                        <p class="zh-text">發送電子郵件至：<a href="mailto:clarencekwan@alumni.cuhk.net?subject=Wedding RSVP - Clarence %26 Eugenia">clarencekwan@alumni.cuhk.net</a></p>
                     </section>
 
                     <section class="countdown animate-on-scroll">
-                        <h2>Counting Down</h2>
+                        <h2 class="zh-text">倒數計時</h2>
                         <div id="countdown-timer">
                             <div class="timer-unit">
                                 <span id="days">00</span>
-                                <label>Days</label>
+                                <label class="zh-text">天</label>
                             </div>
                             <div class="timer-unit">
                                 <span id="hours">00</span>
-                                <label>Hours</label>
+                                <label class="zh-text">時</label>
                             </div>
                             <div class="timer-unit">
                                 <span id="minutes">00</span>
-                                <label>Minutes</label>
+                                <label class="zh-text">分</label>
                             </div>
                             <div class="timer-unit">
                                 <span id="seconds">00</span>
-                                <label>Seconds</label>
+                                <label class="zh-text">秒</label>
                             </div>
                         </div>
                     </section>
@@ -681,7 +711,7 @@
         </div>
 
         <footer class="invitation-footer">
-            <p>We look forward to celebrating with you!</p>
+            <p class="zh-text">期待與您共同見證與慶祝這個特別的日子！</p>
         </footer>
     </div>
 
@@ -705,7 +735,7 @@
                     </defs>
                     <rect width="400" height="500" fill="url(#grad)" />
                     <text x="200" y="250" font-family="'Dancing Script', cursive" font-size="28" text-anchor="middle" fill="#8B4513" font-weight="bold">Clarence & Eugenia</text>
-                    <text x="200" y="290" font-family="'Montserrat', sans-serif" font-size="16" text-anchor="middle" fill="#8B4513" font-style="italic">June 7th, 2025</text>
+                    <text x="200" y="290" font-family="'Noto Serif TC', serif" font-size="16" text-anchor="middle" fill="#8B4513" font-style="italic">2025年6月7日</text>
                     <path d="M200,180 C210,160 240,160 240,180 C240,200 200,220 200,220 C200,220 160,200 160,180 C160,160 190,160 200,180 Z" fill="#a05c2c" />
                 </svg>
             `;
@@ -805,10 +835,10 @@
                 // If the countdown is finished, write some text
                 if (distance < 0) {
                     clearInterval(timer);
-                    document.getElementById("countdown-timer").innerHTML = "<p style='font-size: 1.2em; color: var(--accent-color);'>The Big Day is Here!</p>";
+                    document.getElementById("countdown-timer").innerHTML = "<p style='font-size: 1.2em; color: var(--accent-color);' class='zh-text'>婚禮當天到了！</p>";
                     // Optionally hide the "Counting Down" heading or change it
                     const countdownHeading = document.querySelector('.countdown h2');
-                    if (countdownHeading) countdownHeading.innerText = "It's Wedding Time!";
+                    if (countdownHeading) countdownHeading.innerText = "今天是婚禮！";
                 }
             }, 1000); // Update every second
 
