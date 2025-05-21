@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited! Clarence &amp; Eugenia</title>
+    
+    <!-- Add these Open Graph tags -->
+    <meta property="og:title" content="You're Invited! Clarence & Eugenia">
+    <meta property="og:description" content="We cordially invite you to celebrate our wedding">
+    <meta property="og:url" content="https://selfhighkwan.github.io/selfhighkwan">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* --- Global Styles & Variables --- */
+
+
+        
+        :root {
+            --bg-color: #fdfcf9; /* Soft off-white background */
+            --card-bg: #ffffff; /* White card background */
+            --text-color: #4a4a4a; /* Dark grey for readability */
+            --heading-color: #333333;
+            --accent-color: #8B4513; /* SaddleBrown - warm, elegant */
+            --accent-color-lighter: #a05c2c; /* Lighter brown for hover effects */
+            --accent-color-darker: #6a360f; /* Darker accent for hover */
+            --elegant-font: 'Dancing Script', cursive;
+            --modern-font: 'Montserrat', sans-serif;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--modern-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- Invitation Card Container --- */
+        .invitation-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header --- */
+        .card-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .photo-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            background-color: var(--bg-color);
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .photo-card {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .photo-front, .photo-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .photo-front {
+            background: linear-gradient(135deg, #fdf6e9, #f9e8d2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .photo-back {
+            transform: rotateY(180deg);
+            background-color: white;
+            z-index: 1;
+        }
+
+        /* This fixes the text showing through on mobile */
+        .photo-card.flipped .photo-front {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .photo-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .couple-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cover-heart {
+            color: var(--accent-color);
+            font-size: 60px;
+            margin-bottom: 20px;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .cover-names {
+            font-family: var(--elegant-font);
+            color: var(--accent-color);
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cover-date {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .cover-message {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--accent-color-darker);
+        }
+
+        .photo-container:hover .cover-heart {
+            transform: scale(1.1);
+        }
+
+        .details-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+        }
+
+        .invitation-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header-decoration {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            width: 60%;
+            margin: 12px auto;
+        }
+
+        .invitation-intro {
+            font-size: 0.9em;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .couple-names {
+            font-family: var(--elegant-font);
+            font-size: 2.8em;
+            color: var(--accent-color);
+            margin: 8px 0;
+            line-height: 1.2;
+        }
+
+        .invitation-phrase {
+            font-size: 1em;
+            margin-top: 10px;
+            color: var(--heading-color);
+        }
+
+        /* --- Main Details --- */
+        .invitation-details section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .invitation-details section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: var(--elegant-font);
+            font-size: 1.8em;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* --- Event Info Section --- */
+        .event-info .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .event-info .icon {
+            font-size: 1.2em;
+            color: var(--accent-color);
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            margin-top: 3px;
+        }
+
+        .event-info .label {
+            font-weight: 700;
+            color: var(--heading-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .event-info p {
+            margin: 0;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+
+        .event-info .address {
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        .reception-follow {
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        /* --- RSVP Info --- */
+        .rsvp-info {
+            text-align: center;
+        }
+
+        .rsvp-info p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .rsvp-info a.cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color-lighter);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--border-color);
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .or-divider span {
+            padding: 0 10px;
+            font-size: 0.85em;
+            color: var(--text-color);
+        }
+
+        .rsvp-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .rsvp-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown {
+            text-align: center;
+        }
+
+        #countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-unit {
+            background-color: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 5px;
+            min-width: 60px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timer-unit span {
+            display: block;
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+
+        .timer-unit label {
+            display: block;
+            font-size: 0.7em;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        /* --- Footer --- */
+        .invitation-footer {
+            text-align: center;
+            padding: 15px 20px;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        /* --- Animations --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Heart decoration */
+        .heart-decoration {
+            position: absolute;
+            opacity: 0.1;
+            color: var(--accent-color);
+        }
+
+        .heart-1 {
+            top: 10%;
+            left: 10%;
+            font-size: 25px;
+            transform: rotate(-20deg);
+        }
+
+        .heart-2 {
+            top: 15%;
+            right: 15%;
+            font-size: 18px;
+            transform: rotate(15deg);
+        }
+
+        .heart-3 {
+            bottom: 15%;
+            left: 18%;
+            font-size: 20px;
+            transform: rotate(10deg);
+        }
+
+        .heart-4 {
+            bottom: 20%;
+            right: 10%;
+            font-size: 22px;
+            transform: rotate(-15deg);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .photo-container, .details-container {
+                flex: 100%;
+            }
+            
+            .photo-container {
+                padding: 15px;
+            }
+            
+            .photo-card {
+                max-width: 350px;
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .details-container {
+                padding: 20px 15px;
+            }
+            
+            .couple-names {
+                font-size: 2.4em;
+            }
+            
+            .cover-names {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+                margin-bottom: 12px;
+            }
+            
+            .timer-unit {
+                min-width: 55px;
+                padding: 6px 8px;
+            }
+            
+            .timer-unit span {
+                font-size: 1.4em;
+            }
+            
+            .invitation-header, .invitation-details, .invitation-footer {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            #countdown-timer {
+                gap: 8px;
+            }
+            
+            .photo-card {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .couple-names {
+                font-size: 2em;
+            }
+            
+            .cover-names {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .timer-unit {
+                min-width: 50px;
+                padding: 5px;
+            }
+            
+            .timer-unit span {
+                font-size: 1.2em;
+            }
+            
+            .event-info .icon {
+                margin-right: 8px;
+                font-size: 1.1em;
+            }
+            
+            .header-decoration {
+                margin: 8px auto;
+            }
+            
+            .photo-card {
+                height: 350px;
+            }
+        }
+    
+    
+    .language-selector {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    .lang-tab {
+        padding: 8px 15px;
+        text-decoration: none;
+        color: var(--accent-color);
+        font-family: var(--modern-font);
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+    }
+    
+    .lang-tab:last-child {
+        border-bottom: none;
+    }
+    
+    .lang-tab.active {
+        background-color: rgba(139, 69, 19, 0.1);
+        font-weight: bold;
+    }
+    
+    .lang-tab:hover:not(.active) {
+        background-color: rgba(139, 69, 19, 0.05);
+    }
+    </style>
+</head>
+<body>
+
+    <div class="language-selector">
+        <a href="index-w.html" class="lang-tab active">English</a>
+        <a href="index-zhw.html" class="lang-tab">中文</a>
+    </div>
+
+    <div class="invitation-card">
+        <div class="card-content">
+            <!-- Photo section with flip card effect -->
+            <div class="photo-container">
+                <div class="photo-card" id="photoCard">
+                    <div class="photo-front" id="photoFront">
+                        <!-- Decorative hearts -->
+                        <i class="fas fa-heart heart-decoration heart-1"></i>
+                        <i class="fas fa-heart heart-decoration heart-2"></i>
+                        <i class="fas fa-heart heart-decoration heart-3"></i>
+                        <i class="fas fa-heart heart-decoration heart-4"></i>
+                        
+                        <!-- Cover content -->
+                        <i class="fas fa-heart cover-heart"></i>
+                        <div class="cover-names">Clarence &amp; Eugenia</div>
+                        <div class="cover-date">June 7th, 2025</div>
+                        <div class="cover-message">Click to see our photo</div>
+                    </div>
+                    <div class="photo-back" id="photoBack">
+                        <!-- We'll load the image dynamically with JavaScript -->
+                        <div id="photoPlaceholder" style="width: 100%; height: 100%; background-color: #f9e8d2; display: flex; justify-content: center; align-items: center;">
+                            <div style="text-align: center;">
+                                <i class="fas fa-spin fa-spinner" style="font-size: 30px; color: #8B4513;"></i>
+                                <p style="color: #8B4513; margin-top: 10px;">Loading photo...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details section -->
+            <div class="details-container">
+                <header class="invitation-header">
+                    <div class="header-decoration"></div>
+                    <p class="invitation-intro">Together with their families</p>
+                    <h1 class="couple-names">Clarence &amp; Eugenia</h1>
+                    <p class="invitation-phrase">request the pleasure of your company<br>at their wedding celebration</p>
+                    <div class="header-decoration"></div>
+                </header>
+
+                <main class="invitation-details">
+                    <section class="event-info animate-on-scroll">
+                        <h2>When & Where</h2>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt icon"></i>
+                            <div>
+                                <span class="label">Date:</span>
+                                <p>Saturday, June 7th, 2025</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock icon"></i>
+                            <div>
+                                <span class="label">Time:</span>
+                                <p>5:30 PM  Wedding Ceremony</p>
+                                <p>8:00 PM  Wedding Banquet</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt icon"></i>
+                            <div>
+                                <span class="label">Venue:</span>
+                                <p>Club One The Victoria</p>
+                                <p class="address">1/F, Empire Centre,<br>68 Mody Road, Tsim Sha Tsui</p>
+                            </div>
+                        </div>
+                        <p class="reception-follow">Reception to follow immediately</p>
+                    </section>
+
+                  
+
+                    <section class="countdown animate-on-scroll">
+                        <h2>Counting Down</h2>
+                        <div id="countdown-timer">
+                            <div class="timer-unit">
+                                <span id="days">00</span>
+                                <label>Days</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="hours">00</span>
+                                <label>Hours</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="minutes">00</span>
+                                <label>Minutes</label>
+                            </div>
+                            <div class="timer-unit">
+                                <span id="seconds">00</span>
+                                <label>Seconds</label>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <footer class="invitation-footer">
+            <p>We look forward to celebrating with you!</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Photo card flip functionality
+            const photoCard = document.getElementById('photoCard');
+            const photoFront = document.getElementById('photoFront');
+            const photoBack = document.getElementById('photoBack');
+            const photoContainer = document.querySelector('.photo-container');
+            const photoPlaceholder = document.getElementById('photoPlaceholder');
+            
+            // Create backup image data to use if the file doesn't load
+            const fallbackCouple = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 400 500">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fdf6e9;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f9e8d2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="500" fill="url(#grad)" />
+                    <text x="200" y="250" font-family="'Dancing Script', cursive" font-size="28" text-anchor="middle" fill="#8B4513" font-weight="bold">Clarence & Eugenia</text>
+                    <text x="200" y="290" font-family="'Montserrat', sans-serif" font-size="16" text-anchor="middle" fill="#8B4513" font-style="italic">June 7th, 2025</text>
+                    <path d="M200,180 C210,160 240,160 240,180 C240,200 200,220 200,220 C200,220 160,200 160,180 C160,160 190,160 200,180 Z" fill="#a05c2c" />
+                </svg>
+            `;
+            
+            // Load the real image
+            const realPhoto = new Image();
+            realPhoto.onload = function() {
+                // Replace the placeholder with the actual image
+                photoPlaceholder.innerHTML = '';
+                photoPlaceholder.style.background = 'white';
+                photoPlaceholder.appendChild(realPhoto);
+                realPhoto.className = 'couple-photo';
+            };
+            
+            realPhoto.onerror = function() {
+                console.error('Failed to load image');
+                // Use SVG fallback if image fails to load
+                photoPlaceholder.innerHTML = fallbackCouple;
+            };
+            
+            // Set the source with a timestamp to avoid caching issues
+            realPhoto.src = 'photo1.png?' + new Date().getTime();
+            
+            // Click to flip the card
+            photoContainer.addEventListener('click', function() {
+                photoCard.classList.toggle('flipped');
+                
+                // Extra fix for mobile: explicitly handle front visibility
+                if (photoCard.classList.contains('flipped')) {
+                    setTimeout(() => {
+                        photoFront.style.visibility = 'hidden';
+                    }, 200); // Half-way through the animation
+                } else {
+                    photoFront.style.visibility = 'visible';
+                }
+            });
+            
+            // Double-click prevention
+            let lastTapTime = 0;
+            
+            // Touch functionality for mobile
+            photoContainer.addEventListener('touchend', function(e) {
+                e.preventDefault(); // Prevent default touch behavior
+                
+                // Prevent double-taps
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTapTime;
+                if (tapLength < 500 && tapLength > 0) {
+                    return false;
+                }
+                lastTapTime = currentTime;
+                
+                // Flip card and handle front visibility
+                photoCard.classList.toggle('flipped');
+                
+                if (photoCard.classList.contains('flipped')) {
+                    setTimeout(() => {
+                        photoFront.style.visibility = 'hidden';
+                    }, 200); // Half-way through the animation
+                } else {
+                    photoFront.style.visibility = 'visible';
+                }
+            });
+            
+            // Directly check if hover is available (desktop) and add relevant behavior
+            if (window.matchMedia("(hover: hover)").matches) {
+                photoContainer.addEventListener('mouseenter', function() {
+                    document.querySelector('.cover-heart').style.transform = 'scale(1.1)';
+                });
+                
+                photoContainer.addEventListener('mouseleave', function() {
+                    if (!photoCard.classList.contains('flipped')) {
+                        document.querySelector('.cover-heart').style.transform = 'scale(1)';
+                    }
+                });
+            }
+
+            // --- Countdown Timer ---
+            const countdownDate = new Date("June 7, 2025 17:30:00").getTime();
+
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the elements
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+                // If the countdown is finished, write some text
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown-timer").innerHTML = "<p style='font-size: 1.2em; color: var(--accent-color);'>The Big Day is Here!</p>";
+                    // Optionally hide the "Counting Down" heading or change it
+                    const countdownHeading = document.querySelector('.countdown h2');
+                    if (countdownHeading) countdownHeading.innerText = "It's Wedding Time!";
+                }
+            }, 1000); // Update every second
+
+            // --- Simple Scroll Animation ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
