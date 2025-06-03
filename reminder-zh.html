@@ -53,11 +53,11 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
-            /* FIXED: Significantly increased padding-top for better spacing */
-            padding-top: 100px; 
+            /* FIXED: Reduced padding-top significantly */
+            padding-top: 20px; 
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* FIXED: Changed from center to flex-start */
+            align-items: flex-start;
             min-height: 100%;
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(230, 230, 235, 0.2) 0%, rgba(255, 255, 255, 0) 50%),
@@ -848,12 +848,12 @@
 
         /* --- Mobile-specific Fixes --- */
         @media (max-width: 767px) {
-            /* FIXED: Increased padding for mobile */
+            /* FIXED: Reduced padding for mobile */
             body {
-                padding-top: 120px !important;
+                padding-top: 10px !important;
             }
             
-            /* FIXED: Ensure language selector doesn't overlap content */
+            /* FIXED: Position language selector over the image */
             .language-selector {
                 top: 20px !important;
             }
@@ -864,6 +864,8 @@
                 display: block !important;
                 min-height: 250px !important;
                 position: relative !important;
+                /* FIXED: Reduced padding to make image larger */
+                padding: 10px !important;
             }
             
             .image-wrapper {
@@ -892,9 +894,9 @@
 
         /* iOS-specific fixes */
         @supports (-webkit-touch-callout: none) {
-            /* FIXED: Additional padding for iOS */
+            /* FIXED: Reduced padding for iOS */
             body {
-                padding-top: 120px;
+                padding-top: 10px;
             }
             
             .image-container {
@@ -910,17 +912,17 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            /* FIXED: Maintain enough space at the top */
+            /* FIXED: Reduced padding */
             body {
-                padding-top: 120px;
+                padding-top: 10px;
             }
             
             .invitation-card {
                 flex-direction: column;
                 height: auto;
                 perspective: none;
-                /* FIXED: Add margin at the top */
-                margin-top: 20px;
+                /* FIXED: Removed top margin to bring card higher */
+                margin-top: 0;
             }
             
             .card-page {
@@ -978,24 +980,27 @@
         }
 
         @media (max-width: 576px) {
-            /* FIXED: Even more padding for small screens */
+            /* FIXED: Minimal padding for small screens */
             body {
                 padding: 10px;
-                padding-top: 130px !important;
+                padding-top: 10px !important;
             }
             
             .invitation-card {
                 max-height: none;
-                /* FIXED: Add more margin at the top */
-                margin-top: 30px;
+                /* FIXED: Removed top margin to bring card higher */
+                margin-top: 0;
             }
             
             .photo-content {
-                padding: 20px 15px;
+                /* FIXED: Reduced padding to make the photo appear at top */
+                padding: 10px 15px 20px;
             }
             
             .image-container {
                 height: 250px;
+                /* FIXED: Added small margin-top */
+                margin-top: 0;
             }
             
             .couple-names {
